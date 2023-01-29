@@ -4,6 +4,7 @@ import GitHubStrategy from "passport-github2";
 import passport from "passport";
 import { envConfig } from "../config/env.config.js";
 import User from "../models/user.model.js";
+const { API_URL } = envConfig;
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -19,7 +20,7 @@ passport.use(
     {
       clientID: envConfig.GOOGLE_CLIENT_ID,
       clientSecret: envConfig.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:8000/api/v1/auth/google/callback",
+      callbackURL: `${API_URL}/auth/google/callback`,
     },
     (accessToken, refreshToken, profile, next) => {
       User.findOne({ email: profile._json.email }).then((user) => {
@@ -49,7 +50,7 @@ passport.use(
     {
       clientID: envConfig.FACEBOOK_APP_ID,
       clientSecret: envConfig.FACEBOOK_APP_SECRET,
-      callbackURL: "http://localhost:8000/api/v1/auth/facebook/callback",
+      callbackURL: `${API_URL}/auth/facebook/callback`,
     },
     function (accessToken, refreshToken, profile, next) {
       User.findOne({ facebookId: profile._json.id }).then((user) => {
@@ -79,7 +80,7 @@ passport.use(
     {
       clientID: envConfig.GITHUB_CLIENT_ID,
       clientSecret: envConfig.GITHUB_CLIENT_SECRET,
-      callbackURL: "http://localhost:8000/api/v1/auth/github/callback",
+      callbackURL: `${API_URL}/auth/github/callback`,
     },
     function (accessToken, refreshToken, profile, next) {
       User.findOne({ githubId: profile._json.id }).then((user) => {

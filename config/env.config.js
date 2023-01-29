@@ -10,4 +10,5 @@ export const envConfig = {
   GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
   GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
   CLIENT_URL: process.env.CLIENT_URL,
+  API_URL: process.env.API_URL,
 };
