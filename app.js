@@ -5,6 +5,7 @@ import "./passport/passport.js";
 import passport from "passport";
 
 import auth from "./routes/auth.route.js";
+import { envConfig } from "./config/env.config.js";
 const app = express();
 
 let version = "v1";
@@ -22,7 +23,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: envConfig.CLIENT_URL,
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
