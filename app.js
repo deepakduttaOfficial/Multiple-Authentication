@@ -10,6 +10,9 @@ const app = express();
 
 let version = "v1";
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.use(
   cookieSession({
     maxAge: 3 * 24 * 60 * 60 * 1000,
