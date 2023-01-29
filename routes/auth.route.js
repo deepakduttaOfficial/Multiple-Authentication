@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import { envConfig } from "../config/env.config";
+import { envConfig } from "../config/env.config.js";
 const router = express.Router();
 
 const { CLIENT_URL } = envConfig;
