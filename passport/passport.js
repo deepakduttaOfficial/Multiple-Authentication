@@ -4,7 +4,8 @@ import GitHubStrategy from "passport-github2";
 import passport from "passport";
 import { envConfig } from "../config/env.config.js";
 import User from "../models/user.model.js";
-const { API_URL } = envConfig;
+
+const API_URL = "https://multiple-authentication-backend.onrender.com/api/v1";
 
 passport.serializeUser((user, done) => {
   done(null, user);
