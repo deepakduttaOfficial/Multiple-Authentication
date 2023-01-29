@@ -5,7 +5,7 @@ import passport from "passport";
 import { envConfig } from "../config/env.config.js";
 import User from "../models/user.model.js";
 
-const API_URL = "https://multiple-authentication-backend.onrender.com/api/v1";
+const { API_URL } = envConfig;
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -14,7 +14,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
-
+console.log(API_URL);
 // Google authenticate
 passport.use(
   new GoogleStrategy.Strategy(
